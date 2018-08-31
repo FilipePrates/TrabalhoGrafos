@@ -6,7 +6,7 @@
 class Grafo{
     public:
       Grafo();
-      virtual ~Grafo();
+      ~Grafo();
       int m_numArestas;
       int m_numVertices;
       int getVert() {return m_numVertices;};

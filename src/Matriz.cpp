@@ -15,9 +15,15 @@ Matriz::Matriz(string path){
   }
   myFile >> m_numVertices;
 
-  bool** m_Matriz = new bool*[m_numVertices];
+  bool **m_Matriz = new bool*[m_numVertices];
   for (int i = 0; i < m_numVertices; ++i){
     m_Matriz[i] = new bool[m_numVertices];
+  }
+
+  for (int i = 0; i < m_numVertices; ++i){
+    for (int j = 0; j < m_numVertices; ++j){
+      m_Matriz[i][j] = 0;
+    }
   }
 
 
@@ -35,7 +41,7 @@ Matriz::Matriz(string path){
     }
   }
   ofstream myOutput;
-  myOutput.open(m_savePath + ".txt");
+  myOutput.open(m_savePath + "/info.txt");
   myOutput << "numero vertices:" << m_numVertices << endl;
   myOutput << "numero arestas:" << m_numArestas << endl;
 }
@@ -57,7 +63,7 @@ Matriz::Matriz(string path){
 // }
 
 void Matriz::addAresta(int v0, int vf){
-      m_Matriz[v0][vf] = 1;
+      m_Matriz[v0][vf] = true;
 }
 
 Matriz::~Matriz(){
