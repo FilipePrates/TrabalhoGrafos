@@ -1,3 +1,6 @@
+#ifndef LISTA_H_
+#define LISTA_H_
+
 #include "Grafo.h"
 #include <string>
 
@@ -17,3 +20,4 @@ class Lista : public Grafo{
 
 
 };
+#endif

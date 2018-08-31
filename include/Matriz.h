@@ -1,3 +1,6 @@
+#ifndef MATRIZ_H_
+#define MATRIZ_H_
+
 #include "Grafo.h"
 #include <string>
 #include <new>
@@ -19,3 +22,5 @@ class Matriz : public Grafo{
 
 
 };
+
+#endif
