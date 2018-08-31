@@ -1,6 +1,10 @@
 #include <iostream>
 #include "Matriz.h"
+<<<<<<< HEAD
 #include "Lista.h"
+=======
+//#include "Lista.h"
+>>>>>>> 3dee2583dbcdd984e9b9894c9163e508848fa37e
 
 using namespace std;
 

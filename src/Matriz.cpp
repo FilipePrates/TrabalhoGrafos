@@ -19,6 +19,10 @@ Matriz::Matriz(string path){
       m_Matriz[i][j] = 0;
     }
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3dee2583dbcdd984e9b9894c9163e508848fa37e
 
   ifstream myFile;
   myFile.open(path);
