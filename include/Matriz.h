@@ -13,8 +13,8 @@ class Matriz : public Grafo{
         Matriz(std::string path);
         ~Matriz();
     protected:
-			  matrizInfo
-        void iniciaMatriz(int vertices);
+			  bool m_Matriz[m_numVertices][m_numVertices];
+				void iniciaMatriz(int vertices);
         void addAresta(int v0,int vf);
 
 

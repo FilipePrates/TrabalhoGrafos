@@ -14,6 +14,13 @@ Matriz::Matriz(string path){
     cout << "Location not Found";
   }
   myFile >> m_numVertices;
+
+  bool** m_Matriz = new bool*[m_numVertices];
+  for (int i = 0; i < m_numVertices; ++i){
+    m_Matriz[i] = new bool[cols];
+  }
+
+
   m_Matriz = new MatrizInfo*[m_numVertices+1]();   //Passa pelo espaco que alocou e preenche tudo com 0
   m_numArestas = 0;
   string s;
