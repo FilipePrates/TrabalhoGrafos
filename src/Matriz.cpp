@@ -4,19 +4,22 @@
 #include <fstream>
 #include <sstream>
 #include <new>
+#include <vector>
 
 using namespace std;
 
 Matriz::Matriz(string path){
 
-  int1bit **m_Matriz = new int1bit*[m_numVertices];
-  for (int i = 0; i < m_numVertices; i++){
-    m_Matriz[i] = new int1bit[m_numVertices];
-  }
+  int1bit m_Matriz[m_numVertices][m_numVertices];
+  //vector<vector<int1bit>> m_Matriz[m_numVertices][m_numVertices];
+  // int1bit **m_Matriz = new int1bit *[m_numVertices];
+  // for (int i = 0; i < m_numVertices; i++){
+  //   m_Matriz[i] = new int1bit[m_numVertices];
+  // }
 
   for (int i = 0; i < m_numVertices; i++){
     for (int j = 0; j < m_numVertices; j++){
-      m_Matriz[i][j].x = 0;
+      m_Matriz[i][j].x = false;
     }
   }
 
@@ -50,7 +53,7 @@ void Matriz::addAresta(int v0, int vf){
 
 Matriz::~Matriz(){
   for(int i=0;i<m_numVertices;i++){
-         delete []m_Matriz[i];
+         delete[] m_Matriz[i];
   }
-  delete []m_Matriz;
+  delete[] m_Matriz;
 }
