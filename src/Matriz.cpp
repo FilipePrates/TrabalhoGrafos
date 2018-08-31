@@ -10,19 +10,15 @@ using namespace std;
 Matriz::Matriz(string path){
 
   bool **m_Matriz = new bool*[m_numVertices];
-  for (int i = 0; i < m_numVertices; ++i){
+  for (int i = 0; i < m_numVertices; i++){
     m_Matriz[i] = new bool[m_numVertices];
   }
 
-  for (int i = 0; i < m_numVertices; ++i){
-    for (int j = 0; j < m_numVertices; ++j){
+  for (int i = 0; i < m_numVertices; i++){
+    for (int j = 0; j < m_numVertices; j++){
       m_Matriz[i][j] = 0;
     }
   }
-<<<<<<< HEAD
-=======
-
->>>>>>> 3dee2583dbcdd984e9b9894c9163e508848fa37e
 
   ifstream myFile;
   myFile.open(path);
