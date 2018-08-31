@@ -12,9 +12,9 @@ class Matriz : public Grafo{
     public:
         Matriz(std::string path);
         ~Matriz();
+				bool** m_Matriz;
     protected:
-			  bool m_Matriz[m_numVertices][m_numVertices];
-				void iniciaMatriz(int vertices);
+				//void iniciaMatriz(int m_numVertices);
         void addAresta(int v0,int vf);
 
 
