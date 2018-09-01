@@ -16,21 +16,6 @@ Matriz::Matriz(string path){
   // for (int i = 0; i < m_numVertices; i++){
   //   m_Matriz[i] = new int1bit[m_numVertices];
   // }
-
-
-
-  bool **m_Matriz = new bool*[m_numVertices];
-  for (int i=0;i<m_numVertices;i++){
-    cout << "test" << i << endl;
-    *m_Matriz[i] = new bool[m_numVertices];
-  }
-
-  for (int i = 0; i < m_numVertices; i++){
-    for (int j = 0; j < m_numVertices; j++){
-      m_Matriz[i][j] = false;
-    }
-  }
-
   ifstream myFile;
   myFile.open(path);
   if(!myFile){
@@ -39,6 +24,21 @@ Matriz::Matriz(string path){
   myFile >> m_numVertices;
   m_numArestas = 0;
   string s;
+
+
+  m_Matriz = new bool*[m_numVertices];
+  for (int i=0;i<m_numVertices;i++){
+    m_Matriz[i] = new bool[m_numVertices];
+  }
+
+  for (int i = 0; i < m_numVertices; i++){
+    for (int j = 0; j < m_numVertices; j++){
+    //  if ((i%10 and j%10) == 0){cout<<"test"<<i<<j<<endl;};
+      m_Matriz[i][j] = false;
+    }
+  }
+
+
   while(getline(myFile, s)){
     if(s.empty() == false){
       istringstream tmp(s);                         //Leitura de Arquivo
