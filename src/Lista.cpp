@@ -1,6 +1,6 @@
 #include "Lista.h"
-#include <iostream>
 #include <string>
+#include <iostream>
 #include <fstream>
 #include <sstream>
 
@@ -27,10 +27,12 @@ Lista::Lista(string path){
         m_numArestas++;
       }
     }
-    ofstream myOutput;
-    myOutput.open(m_savePath + "/info.txt");
-    myOutput << "numero vertices:" << m_numVertices << endl;
-    myOutput << "numero arestas:" << m_numArestas << endl;
+
+    ofstream myOut;
+    myOut.open (m_savePath + "/info.txt");
+    myOut << "numero vertices:" << m_numVertices << endl;
+    myOut << "numero arestas:" << m_numArestas << endl;
+    myOut.close();
 
 
 
