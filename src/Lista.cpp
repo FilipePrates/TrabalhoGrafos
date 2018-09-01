@@ -26,7 +26,9 @@ Lista::Lista(string path){
         this->addAresta(vf, v0);
         m_numArestas++;
       }
+    //  cout << "sair do loop1" << endl;
     }
+    cout << "sair do loop2" << endl;
 
     ofstream myOut;
     myOut.open (m_savePath + "/info.txt");
