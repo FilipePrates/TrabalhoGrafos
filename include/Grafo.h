@@ -11,7 +11,7 @@ class Grafo{
       ~Grafo();
       int m_numArestas;
       int m_numVertices;
-      int getVert() {return m_numVertices;};
+    //  int getVert() {return m_numVertices;};
     protected:
       std::string m_savePath = "output"; // editar
 };

@@ -3,7 +3,7 @@
 
 #include "Grafo.h"
 #include <string>
-#include <new>
+
 
 // struct int1bit{
 // 	int x:1;
@@ -14,10 +14,10 @@ class Matriz : public Grafo{
     public:
         Matriz(std::string path);
         ~Matriz();
-				bool** m_Matriz;
     protected:
 				//void iniciaMatriz(int m_numVertices);
         void addAresta(int v0,int vf);
+				bool** m_Matriz;
 
 
 };
