@@ -9,17 +9,25 @@
 using namespace std;
 
 Matriz::Matriz(string path){
-
-  int1bit m_Matriz[m_numVertices][m_numVertices];
+  cout << "antes" << endl;
+  //int1bit m_Matriz[m_numVertices][m_numVertices];
   //vector<vector<int1bit>> m_Matriz[m_numVertices][m_numVertices];
   // int1bit **m_Matriz = new int1bit *[m_numVertices];
   // for (int i = 0; i < m_numVertices; i++){
   //   m_Matriz[i] = new int1bit[m_numVertices];
   // }
 
+ bool* m_Matriz= new bool*[m_numVertices+1];
+
+  // bool *m_Matriz = new bool*[m_numVertices];
+  // for (int i=0;i<m_numVertices;i++){
+  //   cout << "test" << i << endl;
+  //   m_Matriz[i] = new bool[m_numVertices];
+  // }
+
   for (int i = 0; i < m_numVertices; i++){
     for (int j = 0; j < m_numVertices; j++){
-      m_Matriz[i][j].x = false;
+      m_Matriz[i][j] = false;
     }
   }
 
@@ -48,7 +56,7 @@ Matriz::Matriz(string path){
 }
 
 void Matriz::addAresta(int v0, int vf){
-      m_Matriz[v0][vf].x = 1;
+      m_Matriz[v0][vf] = true;
 }
 
 Matriz::~Matriz(){
