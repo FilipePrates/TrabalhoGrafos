@@ -9,7 +9,6 @@
 using namespace std;
 
 Lista::Lista(string path){
-    m_path = path;
     ifstream myFile;
     myFile.open(path);
     if(!myFile){
@@ -54,8 +53,14 @@ void Lista::addAresta(int v0, int vf){
 
 }
 
-ListInfo** Lista::getLista(){
-  return m_pLista;
+vector<int> Lista::vizinhos(int v){
+  vector<int> vizinhos;
+  ListInfo* pCrawl = new ListInfo;
+  while(pCrawl != NULL){
+    vizinhos.push_back(pCrawl->vertice);
+    pCrawl = pCrawl->pNext;
+  }
+  return vizinhos;
 }
 
 

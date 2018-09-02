@@ -12,12 +12,14 @@ class Lista : public Grafo{
         Lista(std::string path);
         ~Lista();
         void Grau();
-        //ListInfo** getLista();
+        vector<int> vizinhos(int v);
+
+      //  ListInfo** getLista();
 
     protected:
         ListInfo** m_pLista;
         void addAresta(int v0,int vf);
-        std::string m_path;
+        //std::string m_path;
 
 
 };
