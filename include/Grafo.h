@@ -12,7 +12,7 @@ class Grafo{
       ~Grafo();
       int m_numArestas;
       int m_numVertices;
-      vector<int> BFS();
+      //vector<int> BFS();
     //  int getVert() {return m_numVertices;};
     protected:
       std::string m_savePath = "output"; // editar

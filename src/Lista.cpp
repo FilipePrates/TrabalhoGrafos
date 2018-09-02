@@ -4,7 +4,8 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
-
+#include <stdlib.h>
+#include <cstdlib>
 
 using namespace std;
 
@@ -54,11 +55,41 @@ void Lista::addAresta(int v0, int vf){
 
 }
 
+int Lista::partition(int *a, int m, int n)
+{
+    int i,j,pindex,pivot;
+    pindex = m;
+    pivot = a[n];
+    for(i=m;i<n;i++)
+    {
+        if(a[i] <= pivot)
+        {
+            swap(a[pindex], a[i]);
+            pindex++;
+        }
+    }
+    swap(a[pindex], a[n]);
+    return pindex;
+}
+
+int Lista::quicksort(int *a, int m, int n)
+{
+    int index;
+    if(m>=n)
+        return 0;
+    {
+        index = partition(a,m,n);
+        quicksort(a, m, index-1);
+        quicksort(a, index+1, n);
+    }
+}
 void Lista::Grau(){
-  vector<int> vetorGrau = {0,10000000,0};
+  int *vetorMediana = new int[m_numVertices];
+  vector<int> vetorGrau = {0,10000000,0,0};
   int count = 0;
   ListInfo* aux = new ListInfo;
   int avg = 0;
+  int teste = 0;
   //cout << "test" << endl;
   for (int i=1;i<m_numVertices+1;i++){
     //cout << "test2" << endl;
@@ -67,14 +98,23 @@ void Lista::Grau(){
       //cout << "test3" << endl;
       aux = aux->pNext;
       count++;
-
     }
     //cout << "test4" << endl;
+    //cout << vetorMediana[i] << endl;
+    //cout << vetorMediana[m_numVertices/2+1]  << endl;
+    vetorMediana[i] = count;
+    cout << vetorMediana[i] << endl;
     avg = avg + count;
     if (count > vetorGrau[0]) {vetorGrau[0] = count+1;}
     if (count < vetorGrau[1]) {vetorGrau[1] = count+1;}
     count = 0;
   }
+
+  quicksort(vetorMediana, 0, m_numVertices);
+  for (int i = 0; i < 5; i++){
+    cout << vetorMediana[i] << endl;
+  }
+  cout << vetorMediana[m_numVertices/2];
   ofstream myOut;
   myOut.open (m_savePath + "/grau.txt");
   myOut << "GrauMax: " << vetorGrau[0] << endl;
@@ -82,6 +122,7 @@ void Lista::Grau(){
   myOut << "GrauMedio: " << (avg/m_numVertices)+1 << endl;
   myOut << "GrauMediana: " << vetorGrau[3] << endl;
   myOut.close();
+  system("pause");
 }
 
 Lista::~Lista(){

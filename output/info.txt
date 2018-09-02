@@ -1,2 +1,2 @@
-numero vertices:32385
-numero arestas:46823
+numero vertices:5
+numero arestas:4

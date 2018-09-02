@@ -16,6 +16,8 @@ class Lista : public Grafo{
         Lista(std::string path);
         ~Lista();
         void Grau();
+        int partition(int *a, int m, int n);
+        int quicksort(int *a, int m, int n);
     protected:
         ListInfo** m_pLista;
         void addAresta(int v0,int vf);

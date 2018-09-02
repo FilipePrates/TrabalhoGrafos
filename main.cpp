@@ -8,7 +8,7 @@ using namespace std;
 
 int main(){
 
-  Lista lista = Lista("as_graph.txt");
+  Lista lista = Lista("new 2.txt");
   lista.Grau();
   //Matriz matriz = Matriz("as_graph.txt");
   //matriz.Grau("as_graph.txt");
