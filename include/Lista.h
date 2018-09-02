@@ -13,6 +13,8 @@ class Lista : public Grafo{
         ~Lista();
         void Grau();
         vector<int> vizinhos(int v);
+        vector<int> BFS(int raiz);
+
 
       //  ListInfo** getLista();
 

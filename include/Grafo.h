@@ -5,6 +5,7 @@
 #include <vector>
 #include <queue>
 
+
 using namespace std;
 
 struct ListInfo{
@@ -15,14 +16,14 @@ struct ListInfo{
 class Grafo{
     public:
       Grafo();
-      ~Grafo();
+      virtual ~Grafo();
       int m_numArestas;
       int m_numVertices;
-      vector<int> BFS(int raiz);
+      //vector<int> BFS(int raiz);
     protected:
       string m_savePath = "output"; // editar
     //  virtual ListInfo** getLista();
-      virtual vector<int> vizinhos(int v);
+    //  virtual vector<int> vizinhos(int v);
 };
 
 #endif
