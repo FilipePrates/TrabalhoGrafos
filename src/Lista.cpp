@@ -58,16 +58,16 @@ void Lista::Grau(){
   vector<int> vetorGrau = {0,10000000,0};
   int count = 0;
   ListInfo* aux = new ListInfo;
-  cout << "test" << endl;
-  for (int i=0;i<m_numVertices;i++){
-    cout << "test2" << endl;
+  //cout << "test" << endl;
+  for (int i=1;i<m_numVertices;i++){
+    //cout << "test2" << endl;
     aux = m_pLista[i]->pNext;
     while(aux != NULL){
-      cout << "test3" << endl;
+      //cout << "test3" << endl;
       aux = aux->pNext;
       count++;
     }
-    cout << "test4" << endl;
+    //cout << "test4" << endl;
     if (count > vetorGrau[0]) {vetorGrau[0] = count;}
     count = 0;
   }

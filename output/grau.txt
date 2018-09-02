@@ -1,0 +1,2 @@
+GrauMax: 2160
+numero arestas:46823
