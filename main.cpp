@@ -10,6 +10,7 @@ int main(){
 
   //Lista lista = Lista("as_graph.txt");
   Matriz matriz = Matriz("as_graph.txt");
+  matriz.Grau("as_graph.txt");
 
   return 0;
 }
