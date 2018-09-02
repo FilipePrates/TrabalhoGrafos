@@ -31,11 +31,11 @@ Lista::Lista(string path){
     }
     //cout << "sair do loop2" << endl;
 
-    ofstream myOut;
-    myOut.open (m_savePath + "/info.txt");
-    myOut << "numero vertices:" << m_numVertices << endl;
-    myOut << "numero arestas:" << m_numArestas << endl;
-    myOut.close();
+      ofstream myOut;
+      myOut.open (m_savePath + "/info.txt");
+      myOut << "numero vertices:" << m_numVertices << endl;
+      myOut << "numero arestas:" << m_numArestas << endl;
+      myOut.close();
 
 
 
@@ -67,6 +67,9 @@ vector<int> Lista::vizinhos(int v){
 vector<int> Lista::BFS(int raiz) {
 
 //	clock_t begin = clock();
+ofstream myOut;
+myOut.open (m_savePath + "/BFS.txt");
+myOut << "start" << endl;
 
 	int s = raiz-1;
 	// Initialize vectors and queue
@@ -93,10 +96,13 @@ vector<int> Lista::BFS(int raiz) {
         pai[w[i]] == v;
         fila.push(w[i]);
       }
+      //cout << w[i] << endl;
     }
+    //cout << v << endl;
     explorado.push_back(v);
+    myOut << v << endl;
   }
-	return explorado;
+  return explorado;
 }
 
 
@@ -121,12 +127,12 @@ void Lista::Grau(){
     if (count < vetorGrau[1]) {vetorGrau[1] = count+1;}
     count = 0;
   }
-  cout << "test5" << endl;
+  //cout << "test5" << endl;
   ofstream myOut;
   myOut.open (m_savePath + "/grau.txt");
   myOut << "GrauMax: " << vetorGrau[0] << endl;
   myOut << "GrauMin:" << vetorGrau[1] << endl;
-  myOut << "GrauMedio: " << (avg/m_numVertices)+1 << endl;
+  myOut << "GrauMedio: " <<   (avg/m_numVertices)+1 << endl;
   myOut << "GrauMediana: " << vetorGrau[3] << endl;
   myOut.close();
 }
