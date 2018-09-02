@@ -14,6 +14,7 @@ Grafo::~Grafo()
 
 }
 
+<<<<<<< HEAD
 // vector<int> Grafo::vizinhos(int v){
 //   vector<int> vizinhos;
 //   ListInfo* pCrawl = new ListInfo;
@@ -24,6 +25,19 @@ Grafo::~Grafo()
 //   }
 //   return vizinhos;
 // }
+=======
+vector<int> Grafo::vizinhos(int v){
+  vector<int> vizinhos;
+  ListInfo* pCrawl = new ListInfo;
+  while(pCrawl != NULL){
+    vizinhos.push_back(pCrawl->vertice);
+    pCrawl = pCrawl->pNext;
+  }
+  return vizinhos;
+}
+
+vector<int> Grafo::BFS(int raiz) {
+>>>>>>> 80b111a6ca984d815db1e09edd45034df2c1eff4
 
 // vector<int> Grafo::BFS(int raiz) {
 //
