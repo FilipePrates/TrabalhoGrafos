@@ -22,32 +22,35 @@ Matriz::Matriz(string path){
   ofstream myOut;
   myOut.open ("output/info.txt");
   myOut << "Mnumero vertices:" << m_numVertices << endl;
-  m_Matriz = new bool*[m_numVertices];
 
+
+  m_Matriz = new bool*[m_numVertices]();
   for (int i=0;i<m_numVertices;i++){
-    m_Matriz[i] = new bool[m_numVertices];
+    m_Matriz[i] = new bool[m_numVertices]();
   }
 
-  for (int i = 0; i < m_numVertices; i++){
-    for (int j = 0; j < m_numVertices; j++){
-      //  if ((i%10 and j%10) == 0){cout<<"test"<<i<<j<<endl;};
-      m_Matriz[i][j] = false;
-    }
-  }
+  // for (int i = 0; i < m_numVertices; i++){
+  //   for (int j = 0; j < m_numVertices; j++){
+  //     //  if ((i%10 and j%10) == 0){cout<<"test"<<i<<j<<endl;};
+  //     m_Matriz[i][j] = false;
+  //   }
+  // }
+  //cout << m_Matriz[0] << endl;
 
   m_numArestas = 0;
   string s;
+  // while(getline(myFile, s)){
   while(getline(myFile, s)){
     if(s.empty() == false){
       istringstream tmp(s);                         //Leitura de Arquivo
-      bool v0 ,vf;
+      int v0 ,vf;
       tmp >> v0 >> vf;
-      this->addAresta(v0, vf);
-      this->addAresta(vf, v0);
+      m_Matriz[v0][vf] = true;
+      m_Matriz[vf][v0] = true;
+      // this->addAresta(v0, vf);
+      // this->addAresta(vf, v0);
       m_numArestas++;
     }
-    //myOut << "Mnumero arestas:" << m_numArestas << endl;
-    //cout << "sair do loop1" << endl;
   }
   cout << "sair do loop2" << endl;
 
@@ -83,7 +86,7 @@ std::vector<int> Matriz::Grau(string path)
   }
   ofstream myOut;
   myOut.open ("output/grau.txt");
-  myOut << "GrauMax" << vetorGrau[0] << endl;
+  myOut << "GrauMax: " << vetorGrau[0] << endl;
 
 
   return vetorGrau;

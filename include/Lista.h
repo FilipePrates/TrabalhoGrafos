@@ -3,6 +3,7 @@
 
 #include "Grafo.h"
 #include <string>
+#include <vector>
 
 
 struct ListInfo{
@@ -14,9 +15,11 @@ class Lista : public Grafo{
     public:
         Lista(std::string path);
         ~Lista();
+        void Grau();
     protected:
         ListInfo** m_pLista;
         void addAresta(int v0,int vf);
+        std::string m_path;
 
 
 };

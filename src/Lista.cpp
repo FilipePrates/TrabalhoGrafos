@@ -3,11 +3,13 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <vector>
 
 
 using namespace std;
 
 Lista::Lista(string path){
+    m_path = path;
     ifstream myFile;
     myFile.open(path);
     if(!myFile){
@@ -50,6 +52,30 @@ void Lista::addAresta(int v0, int vf){
   vizinho->pPrev = NULL;
   this->m_pLista[v0] = vizinho;
 
+}
+
+void Lista::Grau(){
+  vector<int> vetorGrau = {0,10000000,0};
+  int count = 0;
+  ListInfo* aux = new ListInfo;
+  cout << "test" << endl;
+  for (int i=0;i<m_numVertices;i++){
+    cout << "test2" << endl;
+    aux = m_pLista[i]->pNext;
+    while(aux != NULL){
+      cout << "test3" << endl;
+      aux = aux->pNext;
+      count++;
+    }
+    cout << "test4" << endl;
+    if (count > vetorGrau[0]) {vetorGrau[0] = count;}
+    count = 0;
+  }
+  ofstream myOut;
+  myOut.open (m_savePath + "/grau.txt");
+  myOut << "GrauMax: " << vetorGrau[0] << endl;
+  myOut << "numero arestas:" << m_numArestas << endl;
+  myOut.close();
 }
 
 Lista::~Lista(){
