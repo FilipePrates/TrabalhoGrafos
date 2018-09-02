@@ -1,2 +1,4 @@
 GrauMax: 2160
-numero arestas:46823
+GrauMin:0
+GrauMedio: 0
+GrauMediana: 0

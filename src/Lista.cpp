@@ -59,7 +59,7 @@ void Lista::Grau(){
   int count = 0;
   ListInfo* aux = new ListInfo;
   //cout << "test" << endl;
-  for (int i=1;i<m_numVertices;i++){
+  for (int i=1;i<m_numVertices+1;i++){
     //cout << "test2" << endl;
     aux = m_pLista[i]->pNext;
     while(aux != NULL){
@@ -69,12 +69,15 @@ void Lista::Grau(){
     }
     //cout << "test4" << endl;
     if (count > vetorGrau[0]) {vetorGrau[0] = count;}
+    if (count < vetorGrau[1]) {vetorGrau[1] = count;}
     count = 0;
   }
   ofstream myOut;
   myOut.open (m_savePath + "/grau.txt");
   myOut << "GrauMax: " << vetorGrau[0] << endl;
-  myOut << "numero arestas:" << m_numArestas << endl;
+  myOut << "GrauMin:" << vetorGrau[1] << endl;
+  myOut << "GrauMedio: " << vetorGrau[2] << endl;
+  myOut << "GrauMediana: " << vetorGrau[3] << endl;
   myOut.close();
 }
 
