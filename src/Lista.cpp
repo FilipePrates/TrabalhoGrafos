@@ -30,7 +30,7 @@ Lista::Lista(string path){
       }
     //  cout << "sair do loop1" << endl;
     }
-    cout << "sair do loop2" << endl;
+    //cout << "sair do loop2" << endl;
 
     ofstream myOut;
     myOut.open (m_savePath + "/info.txt");
@@ -54,13 +54,18 @@ void Lista::addAresta(int v0, int vf){
 
 }
 
+ListInfo** Lista::getLista(){
+  return m_pLista;
+}
+
+
 void Lista::Grau(){
   vector<int> vetorGrau = {0,10000000,0};
   int count = 0;
   ListInfo* aux = new ListInfo;
   int avg = 0;
   //cout << "test" << endl;
-  for (int i=1;i<m_numVertices+1;i++){
+  for (int i=1;i<m_numVertices;i++){
     //cout << "test2" << endl;
     aux = m_pLista[i]->pNext;
     while(aux != NULL){
@@ -75,6 +80,7 @@ void Lista::Grau(){
     if (count < vetorGrau[1]) {vetorGrau[1] = count+1;}
     count = 0;
   }
+  cout << "test5" << endl;
   ofstream myOut;
   myOut.open (m_savePath + "/grau.txt");
   myOut << "GrauMax: " << vetorGrau[0] << endl;

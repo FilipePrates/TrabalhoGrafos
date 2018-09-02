@@ -5,6 +5,10 @@
 #include <vector>
 #include <queue>
 
+struct ListInfo{
+    int vertice;
+    ListInfo *pNext, *pPrev;
+};
 
 class Grafo{
     public:
@@ -12,10 +16,11 @@ class Grafo{
       ~Grafo();
       int m_numArestas;
       int m_numVertices;
-      vector<int> BFS();
+      std::vector<int> BFS(int raiz);
     //  int getVert() {return m_numVertices;};
     protected:
       std::string m_savePath = "output"; // editar
+      virtual ListInfo** getLista();
 };
 
 #endif

@@ -1,4 +1,4 @@
 GrauMax: 2161
 GrauMin:1
-GrauMedio: 1
+GrauMedio: 2
 GrauMediana: 0
