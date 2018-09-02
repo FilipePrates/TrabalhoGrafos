@@ -40,20 +40,20 @@ Matriz::Matriz(string path){
   while(getline(myFile, s)){
     if(s.empty() == false){
       istringstream tmp(s);                         //Leitura de Arquivo
-      int v0 ,vf;
+      bool v0 ,vf;
       tmp >> v0 >> vf;
       this->addAresta(v0, vf);
       this->addAresta(vf, v0);
       m_numArestas++;
-    };
-    myOut << "Mnumero arestas:" << m_numArestas << endl;
+    }
+    //myOut << "Mnumero arestas:" << m_numArestas << endl;
     //cout << "sair do loop1" << endl;
   }
   cout << "sair do loop2" << endl;
 
   //ofstream myOut;
   //myOut.open ("output/info.txt");
-  myOut << "Mnumero vertices:" << m_numVertices << endl;
+  //myOut << "Mnumero vertices:" << m_numVertices << endl;
   myOut << "Mnumero arestas:" << m_numArestas << endl;
   myOut.close();
 
