@@ -15,7 +15,7 @@ struct ListInfo{
 class Grafo{
     public:
       Grafo();
-      ~Grafo();
+      virtual ~Grafo();
       int m_numArestas;
       int m_numVertices;
       vector<int> BFS(int raiz);

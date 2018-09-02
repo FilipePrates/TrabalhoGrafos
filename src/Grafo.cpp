@@ -14,6 +14,16 @@ Grafo::~Grafo()
 
 }
 
+vector<int> Grafo::vizinhos(int v){
+  vector<int> vizinhos;
+  ListInfo* pCrawl = new ListInfo;
+  while(pCrawl != NULL){
+    vizinhos.push_back(pCrawl->vertice);
+    pCrawl = pCrawl->pNext;
+  }
+  return vizinhos;
+}
+
 vector<int> Grafo::BFS(int raiz) {
 
 //	clock_t begin = clock();
