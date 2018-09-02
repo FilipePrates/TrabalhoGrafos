@@ -1,4 +1,4 @@
-GrauMax: 2160
-GrauMin:0
-GrauMedio: 0
+GrauMax: 2159
+GrauMin:1
+GrauMedio: 347
 GrauMediana: 0

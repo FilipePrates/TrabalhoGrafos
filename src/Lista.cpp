@@ -58,6 +58,7 @@ void Lista::Grau(){
   vector<int> vetorGrau = {0,10000000,0};
   int count = 0;
   ListInfo* aux = new ListInfo;
+  int avg = 0;
   //cout << "test" << endl;
   for (int i=1;i<m_numVertices+1;i++){
     //cout << "test2" << endl;
@@ -66,17 +67,18 @@ void Lista::Grau(){
       //cout << "test3" << endl;
       aux = aux->pNext;
       count++;
+      avg = avg + count;
     }
     //cout << "test4" << endl;
-    if (count > vetorGrau[0]) {vetorGrau[0] = count;}
-    if (count < vetorGrau[1]) {vetorGrau[1] = count;}
+    if (count > vetorGrau[0]) {vetorGrau[0] = count-1;}
+    if (count < vetorGrau[1]) {vetorGrau[1] = count+1;}
     count = 0;
   }
   ofstream myOut;
   myOut.open (m_savePath + "/grau.txt");
   myOut << "GrauMax: " << vetorGrau[0] << endl;
   myOut << "GrauMin:" << vetorGrau[1] << endl;
-  myOut << "GrauMedio: " << vetorGrau[2] << endl;
+  myOut << "GrauMedio: " << (avg/m_numVertices) << endl;
   myOut << "GrauMediana: " << vetorGrau[3] << endl;
   myOut.close();
 }
