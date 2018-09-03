@@ -1,1 +1,2 @@
 start
+vertice: 2: pai:-1 nivel:0

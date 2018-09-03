@@ -12,7 +12,7 @@ using namespace std;
 int main(){
 
   Lista lista = Lista("as_graph.txt");
-  lista.BFS(2);
+  lista.DFS(3);
   //lista.Grau();
   //lista.vizinhos(2);
   //vector<int> x = lista.BFS(3);

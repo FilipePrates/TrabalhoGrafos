@@ -62,9 +62,9 @@ vector<int> Lista::vizinhos(int v){
     vizinhos.push_back(pCrawl->vertice);
     pCrawl = pCrawl->pNext;
   }
-  for(int i=0;i<vizinhos.size();i++){
-    cout << vizinhos[i] << endl;
-  }
+  // for(int i=0;i<vizinhos.size();i++){
+  //   cout << vizinhos[i] << endl;
+  // }
   return vizinhos;
 }
 
@@ -107,7 +107,7 @@ myOut << "start" << endl;
     explorado.push_back(v);
   }
   for(int i=0;i<explorado.size();i++){
-    myOut << explorado[i] << ":"<< pai[explorado[i]] << "e" << nivel[explorado[i]] << endl;
+    myOut << "vertice: "<< explorado[i] << ": pai:"<< pai[explorado[i]] << " nivel:" << nivel[explorado[i]] << endl;
   }
   return explorado;
 }
@@ -140,14 +140,19 @@ void Lista::Grau(){
   myOut.close();
 }
 
-vector<bool> Lista::DFS(int raiz) {
+vector<int> Lista::DFS(int raiz) {
 
 	int src = raiz-1;
 	// Initialize vectors and stack
 	vector<bool> visitado(m_numVertices,0);
-	vector<int> parent(m_numVertices,-1);
+	vector<int> pai(m_numVertices,-1);
 	vector<int> nivel(m_numVertices,-1);
 	stack<int> pilha;
+  vector<int> explorado;
+
+  ofstream myOut;
+  myOut.open (m_savePath + "/BFS.txt");
+  myOut << "start" << endl;
 
 	//Mark src as visitado and add it to the queue
 	visitado[src] = 1;
@@ -162,12 +167,18 @@ vector<bool> Lista::DFS(int raiz) {
       visitado[v] = 1;
       vector<int> w = vizinhos(v);
       for(int i = 0; i < w.size();i++){
-        pilha.push(w[i]);
-        cout << w[i] << endl;
-      }
+          visitado[w[i]-1] = 1;
+          pai[w[i]-1] = v;
+          nivel[w[i]-1] = nivel[v]+1;
+          pilha.push(w[i]-1);
+        }
     }
+    explorado.push_back(v);
   }
-	return visitado;
+  for(int i=0;i<explorado.size();i++){
+    myOut << "vertice: "<< explorado[i] << ": pai:"<< pai[explorado[i]] << " nivel:" << nivel[explorado[i]] << endl;
+  }
+	return explorado;
 }
 
 Lista::~Lista(){
