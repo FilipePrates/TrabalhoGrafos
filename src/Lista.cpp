@@ -154,8 +154,7 @@ vector<int> Lista::DFS(int raiz) {
   myOut.open (m_savePath + "/BFS.txt");
   myOut << "start" << endl;
 
-	//Mark src as visitado and add it to the queue
-	visitado[src] = 1;
+	//visitado[src] = 1;
 	nivel[src] = 0;
 	pilha.push(src);
 
