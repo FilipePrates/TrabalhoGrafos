@@ -1,4 +1,1 @@
-GrauMax: 2
-GrauMin:1
-GrauMedio: 1
-GrauMediana: 4
+GrauMax: 32385

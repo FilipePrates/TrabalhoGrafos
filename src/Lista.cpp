@@ -151,7 +151,7 @@ vector<int> Lista::DFS(int raiz) {
   vector<int> explorado;
 
   ofstream myOut;
-  myOut.open (m_savePath + "/BFS.txt");
+  myOut.open (m_savePath + "/DFS.txt");
   myOut << "start" << endl;
 
 	//visitado[src] = 1;
