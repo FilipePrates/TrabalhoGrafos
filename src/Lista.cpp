@@ -4,7 +4,8 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
-
+#include <stack>
+#include <queue>
 
 using namespace std;
 
@@ -61,6 +62,9 @@ vector<int> Lista::vizinhos(int v){
     vizinhos.push_back(pCrawl->vertice);
     pCrawl = pCrawl->pNext;
   }
+  for(int i=0;i<vizinhos.size();i++){
+    cout << vizinhos[i] << endl;
+  }
   return vizinhos;
 }
 
@@ -71,15 +75,14 @@ ofstream myOut;
 myOut.open (m_savePath + "/BFS.txt");
 myOut << "start" << endl;
 
+
 	int s = raiz-1;
-	// Initialize vectors and queue
 	vector<bool> visitado(m_numVertices,0);
 	vector<int> pai(m_numVertices,-1);
 	vector<int> nivel(m_numVertices,-1);
 	vector<int> explorado;
 	queue<int> fila;
 
-	//Mark src as visitado and add it to the queue
 	visitado[s] = 1;
 	nivel[s] = 0;
 	fila.push(s);
@@ -92,15 +95,13 @@ myOut << "start" << endl;
     vector<int> w = vizinhos(v);
     for(int i = 0;i< w.size();i++){
       if(visitado[w[i]] == 0) {
-        visitado[w[i]] == 1;
-        pai[w[i]] == v;
+        visitado[w[i]] = 1;
+        pai[w[i]] = v;
         fila.push(w[i]);
+        nivel[w[i]] = nivel[v] + 1;
       }
-      //cout << w[i] << endl;
     }
-    //cout << v << endl;
     explorado.push_back(v);
-    myOut << v << endl;
   }
   return explorado;
 }
@@ -111,30 +112,54 @@ void Lista::Grau(){
   int count = 0;
   ListInfo* aux = new ListInfo;
   int avg = 0;
-  //cout << "test" << endl;
   for (int i=1;i<m_numVertices;i++){
-    //cout << "test2" << endl;
     aux = m_pLista[i]->pNext;
     while(aux != NULL){
-      //cout << "test3" << endl;
       aux = aux->pNext;
       count++;
 
     }
-    //cout << "test4" << endl;
     avg = avg + count;
     if (count > vetorGrau[0]) {vetorGrau[0] = count+1;}
     if (count < vetorGrau[1]) {vetorGrau[1] = count+1;}
     count = 0;
   }
-  //cout << "test5" << endl;
   ofstream myOut;
   myOut.open (m_savePath + "/grau.txt");
   myOut << "GrauMax: " << vetorGrau[0] << endl;
   myOut << "GrauMin:" << vetorGrau[1] << endl;
   myOut << "GrauMedio: " <<   (avg/m_numVertices)+1 << endl;
-  myOut << "GrauMediana: " << vetorGrau[3] << endl;
+  // myOut << "GrauMediana: " << vetorGrau[3] << endl;
   myOut.close();
+}
+
+vector<bool> Lista::DFS(int raiz) {
+
+	int src = raiz-1;
+	// Initialize vectors and stack
+	vector<bool> visitado(m_numVertices,0);
+	vector<int> parent(m_numVertices,-1);
+	vector<int> nivel(m_numVertices,-1);
+	stack<int> pilha;
+
+	//Mark src as visitado and add it to the queue
+	visitado[src] = 1;
+	nivel[src] = 0;
+	pilha.push(src);
+
+	cout << endl<< "DFS(" << raiz << ") Running..." << endl;
+	while(!pilha.empty()) {
+		int v = pilha.top();
+		pilha.pop();
+    if(visitado[v]==0){
+      visitado[v] = 1;
+      vector<int> w = vizinhos(v);
+      for(int i = 0; i < w.size();i++){
+        pilha.push(w[i]);
+      }
+    }
+  }
+	return visitado;
 }
 
 Lista::~Lista(){
