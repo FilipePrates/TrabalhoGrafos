@@ -135,7 +135,7 @@ void Lista::Grau(){
   myOut.open (m_savePath + "/grau.txt");
   myOut << "GrauMax: " << vetorGrau[0] << endl;
   myOut << "GrauMin:" << vetorGrau[1] << endl;
-  myOut << "GrauMedio: " <<   (avg/m_numVertices)+1 << endl;
+  myOut << "GrauMedio: " << (avg/m_numVertices)+1 << endl;
   // myOut << "GrauMediana: " << vetorGrau[3] << endl;
   myOut.close();
 }
@@ -151,7 +151,7 @@ vector<int> Lista::DFS(int raiz) {
   vector<int> explorado;
 
   ofstream myOut;
-  myOut.open (m_savePath + "/BFS.txt");
+  myOut.open (m_savePath + "/DFS.txt");
   myOut << "start" << endl;
 
 	//visitado[src] = 1;
