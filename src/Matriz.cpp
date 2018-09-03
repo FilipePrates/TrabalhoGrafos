@@ -29,13 +29,13 @@ Matriz::Matriz(string path){
     m_Matriz[i] = new bool[m_numVertices]();
   }
 
-  // for (int i = 0; i < m_numVertices; i++){
-  //   for (int j = 0; j < m_numVertices; j++){
-  //     //  if ((i%10 and j%10) == 0){cout<<"test"<<i<<j<<endl;};
-  //     m_Matriz[i][j] = false;
-  //   }
-  // }
-  //cout << m_Matriz[0] << endl;
+  for (int i = 0; i < m_numVertices; i++){
+    for (int j = 0; j < m_numVertices; j++){
+      //  if ((i%10 and j%10) == 0){cout<<"test"<<i<<j<<endl;};
+      m_Matriz[i][j] = false;
+    }
+  }
+
 
   m_numArestas = 0;
   string s;
