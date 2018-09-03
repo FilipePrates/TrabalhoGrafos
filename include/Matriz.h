@@ -21,6 +21,7 @@ class Matriz : public Grafo{
 				//void iniciaMatriz(int m_numVertices);
         void addAresta(int v0,int vf);
 				bool** m_Matriz;
+      //  vector<int> vizinhos(int v);
 
 
 };

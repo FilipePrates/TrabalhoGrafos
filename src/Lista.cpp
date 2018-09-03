@@ -119,7 +119,7 @@ void Lista::Grau(){
   int count = 0;
   ListInfo* aux = new ListInfo;
   int avg = 0;
-  for (int i=1;i<m_numVertices;i++){
+  for (int i=1;i<m_numVertices+1;i++){
     aux = m_pLista[i]->pNext;
     while(aux != NULL){
       aux = aux->pNext;
@@ -127,15 +127,15 @@ void Lista::Grau(){
 
     }
     avg = avg + count;
-    if (count > vetorGrau[0]) {vetorGrau[0] = count+1;}
-    if (count < vetorGrau[1]) {vetorGrau[1] = count+1;}
+    if (count > vetorGrau[0]) {vetorGrau[0] = count;}
+    if (count < vetorGrau[1]) {vetorGrau[1] = count;}
     count = 0;
   }
   ofstream myOut;
   myOut.open (m_savePath + "/grau.txt");
   myOut << "GrauMax: " << vetorGrau[0] << endl;
   myOut << "GrauMin:" << vetorGrau[1] << endl;
-  myOut << "GrauMedio: " << (avg/m_numVertices)+1 << endl;
+  myOut << "GrauMedio: " << (float)(avg/m_numVertices)+1 << endl;
   // myOut << "GrauMediana: " << vetorGrau[3] << endl;
   myOut.close();
 }
@@ -179,6 +179,47 @@ vector<int> Lista::DFS(int raiz) {
   }
 	return explorado;
 }
+
+// void Lista::CC () {
+// 	//Initialize matrix of connected components
+// 	vector<bool> explored(m_numVertices,0);
+// 	vector<vector<int> > CC;
+// 	int it;
+//   int aux = 0;
+//   while(aux == 0){
+//     for(int i = 0;i<explored.size();i++){
+//       if(explored[i] == 0){
+//         it = i;
+//         aux = 1;
+//       }
+//     }
+//   }
+// 	while(it!=explored.end()) {
+// 		vector<bool> visited = DFS(it-explored.begin()+1);
+// 		vector<int> buffer;
+//
+// 		for (int j=0;j<visited.size();j++) {
+// 			if(visited[j] == 1) {
+// 				buffer.push_back(j);
+// 				explored[j] = 1;
+// 			}
+// 		}
+// 		CC.push_back(buffer);
+// 		it = find(explored.begin(),explored.end(),0);
+// 	}w
+//
+// 	sort(CC.begin(),CC.end(),less_vectors);
+//
+// 	cout << endl << "--------COMPONENTS--------" << endl;
+// 	cout << "TOTAL: " << CC.size() << endl;
+// 	for(int j=0;j<CC.size();j++) {
+// 		cout << j <<": {";
+// 		//for(int k=0;k<CC[j].size();k++)
+// 		//	cout << "," << CC[j][k]+1;
+// 		cout << "} Size = " << CC[j].size() << endl;
+// 	}
+//
+// }
 
 Lista::~Lista(){
     ListInfo* aux;

@@ -1,7 +1,0 @@
-<<<<<<< HEAD
-GrauMax: 2159
-GrauMin: 0
-GrauMedio: 2
-=======
-GrauMax: 32385
->>>>>>> 473b868b215fa5cac1d9a8c06317a70f6d9f3d45

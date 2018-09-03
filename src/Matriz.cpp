@@ -66,6 +66,16 @@ void Matriz::addAresta(int v0, int vf){
       m_Matriz[v0][vf] = true;
 }
 
+// vector<int> Matriz::vizinho(int v){
+//     vectori<int> vizinhos;
+//     for(i=0;i<m_numVertices;i++){
+//       if (m_Matriz[v][i] == true){
+//         vizinhos.push_back(i);
+//       }
+//     }
+//     return vizinhos;
+// }
+
 void Matriz::Grau()
 {
   int aux2 = 0;
@@ -80,7 +90,6 @@ void Matriz::Grau()
     auxMed += aux2;
     if (aux2 > vetorGrau[0]) {
       vetorGrau[0] = aux2;
-      cout << "ya" << endl;
     }
     if (aux2 < vetorGrau[1]) {
       vetorGrau[1] = aux2;
@@ -91,9 +100,7 @@ void Matriz::Grau()
   myOut.open ("output/grau.txt");
   myOut << "GrauMax: " << vetorGrau[0] << endl;
   myOut << "GrauMin: " << vetorGrau[1] << endl;
-  myOut << "GrauMedio: " << auxMed/m_numVertices << endl;
-
-
+  myOut << "GrauMedio: " << (float)(auxMed/m_numVertices) << endl;
 }
 
 Matriz::~Matriz(){
