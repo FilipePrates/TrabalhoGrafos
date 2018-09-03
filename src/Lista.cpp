@@ -95,25 +95,23 @@ myOut << "start" << endl;
     vector<int> w = vizinhos(v);
     //cout << w.size() << endl;
     for(int i = 0;i< w.size();i++){
-      if(visitado[w[i]] == 0) {
-        visitado[w[i]] = 1;
-        pai[w[i]] = v;
-        fila.push(w[i]);
-        nivel[w[i]] = nivel[v] + 1;
       if(visitado[w[i]-1] == 0) {
         visitado[w[i]-1] = 1;
         pai[w[i]-1] = v;
         nivel[w[i]-1] = nivel[v]+1;
         fila.push(w[i]-1);
+        }
       }
-    }
     //cout << v << endl;
-    cout << v << endl;
+    //cout << v << endl;
     explorado.push_back(v);
+  }
+  for(int i=0;i<explorado.size();i++){
+    myOut << explorado[i] << ":"<< pai[explorado[i]] << "e" << nivel[explorado[i]] << endl;
   }
   return explorado;
 }
-}
+
 
 
 void Lista::Grau(){
@@ -165,6 +163,7 @@ vector<bool> Lista::DFS(int raiz) {
       vector<int> w = vizinhos(v);
       for(int i = 0; i < w.size();i++){
         pilha.push(w[i]);
+        cout << w[i] << endl;
       }
     }
   }
