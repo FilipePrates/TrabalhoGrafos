@@ -4,7 +4,10 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+<<<<<<< HEAD
 #include <stack>
+=======
+>>>>>>> 67277b30a0ff5351efe276c145349f9f1fb2c05f
 #include <queue>
 
 using namespace std;
@@ -93,14 +96,28 @@ myOut << "start" << endl;
 		int v = fila.front();
 		fila.pop();
     vector<int> w = vizinhos(v);
+    //cout << w.size() << endl;
     for(int i = 0;i< w.size();i++){
+<<<<<<< HEAD
       if(visitado[w[i]] == 0) {
         visitado[w[i]] = 1;
         pai[w[i]] = v;
         fila.push(w[i]);
         nivel[w[i]] = nivel[v] + 1;
+=======
+      if(visitado[w[i]-1] == 0) {
+        visitado[w[i]-1] = 1;
+        pai[w[i]-1] = v;
+        nivel[w[i]-1] = nivel[v]+1;
+        fila.push(w[i]-1);
+>>>>>>> 67277b30a0ff5351efe276c145349f9f1fb2c05f
       }
     }
+<<<<<<< HEAD
+=======
+    //cout << v << endl;
+    cout << v << endl;
+>>>>>>> 67277b30a0ff5351efe276c145349f9f1fb2c05f
     explorado.push_back(v);
   }
   return explorado;
