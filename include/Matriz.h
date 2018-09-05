@@ -24,7 +24,7 @@ class Matriz : public Grafo{
     protected:
 				//void iniciaMatriz(int m_numVertices);
         void addAresta(int v0,int vf);
-				int1bit** m_Matriz;
+				bool** m_Matriz;
 
 
 };

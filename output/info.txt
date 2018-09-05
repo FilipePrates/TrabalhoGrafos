@@ -1,1 +1,2 @@
-Mnumero vertices:1397510
+Mnumero vertices:32385
+Mnumero arestas:46823

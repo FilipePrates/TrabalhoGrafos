@@ -32,16 +32,16 @@ Matriz::Matriz(string path){
   myOut << "Mnumero vertices:" << m_numVertices << endl;
 
   //Alocacao da matriz na memória
-  m_Matriz = new int1bit*[m_numVertices+1];
+  m_Matriz = new bool*[m_numVertices+1];
   for (int i=0;i<m_numVertices+1;i++){
-    m_Matriz[i] = new int1bit[m_numVertices+1];
+    m_Matriz[i] = new bool[m_numVertices+1];
   }
 
   //Seta todos os valores da matriz como zero
   for (int i = 0; i <= m_numVertices; i++){
     for (int j = 0; j <= m_numVertices; j++){
       //  if ((i%10 and j%10) == 0){cout<<"test"<<i<<j<<endl;};
-      m_Matriz[i][j].x = 1;
+      m_Matriz[i][j] = true;
     }
   }
 
@@ -56,14 +56,14 @@ Matriz::Matriz(string path){
       istringstream tmp(s);
       int v0, vf;
       tmp >> v0 >> vf;
-      m_Matriz[v0][vf].x = 1;
-      m_Matriz[vf][v0].x = 1;
+      m_Matriz[v0][vf] = true;
+      m_Matriz[vf][v0] = true;
       // this->addAresta(v0, vf);
       // this->addAresta(vf, v0);
       m_numArestas++;
     }
   }
-  cout << "sair do loop2" << endl;
+  //cout << "sair do loop2" << endl;
 
   //ofstream myOut;
   //myOut.open ("output/info.txt");
@@ -76,7 +76,7 @@ Matriz::Matriz(string path){
 
 //Funcao que adiciona uma aresta na matriz, setando como true
 void Matriz::addAresta(int v0, int vf){
-      m_Matriz[v0][vf].x = 1;
+      m_Matriz[v0][vf] = true;
 }
 
 //Retorna os vizinhos do vertice v, sendo vertice inicial igual a 1
@@ -88,7 +88,7 @@ vector<int> Matriz::vizinhos(int v){
   //Percorre a linha de adjacências do vértice passado como parâmetro e adiciona
   //no vetor de vizinhos caso exista a adjacência
   for (int i = 0; i <= m_numVertices; i++){
-    if (m_Matriz[v][i].x == 1){
+    if (m_Matriz[v][i] == true){
       vizinho.push_back(i);
     }
   }
