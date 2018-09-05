@@ -134,12 +134,10 @@ vector<int> Lista::BFS(int raiz) {
     //Adiciona o vértice ao vetor explorado depois do loop
     explorado.push_back(v);
   }
-
   //Escreve no arquivo de saída o vértice, seu pai e seu nivel
   for(int i=0;i<explorado.size();i++){
     myOut << "vertice: "<< explorado[i] << ": pai:"<< pai[explorado[i]] << " nivel:" << nivel[explorado[i]] << endl;
   }
-
   //Retorno do vetor explorados
   return explorado;
 }
@@ -171,7 +169,7 @@ void Lista::Grau(){
   myOut.close();
 }*/
 
-// Funcao que retorna os graus máximo, minimo, medio e mediana
+//Funcao que retorna os graus máximo, minimo, medio e mediana
 void Lista::Grau2(){
   //Vetor de comparação para achar os graus máximo e mínimo
   vector<int> vetorGrau = {0, 10000000, 0};
