@@ -1,0 +1,4 @@
+GrauMax: 1638
+GrauMin:0
+GrauMedio: 7.80075
+GrauMediana: 4
