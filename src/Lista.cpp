@@ -6,6 +6,7 @@
 #include <vector>
 #include <stack>
 #include <queue>
+#include <ctime>
 
 using namespace std;
 
@@ -62,15 +63,15 @@ vector<int> Lista::vizinhos(int v){
     vizinhos.push_back(pCrawl->vertice);
     pCrawl = pCrawl->pNext;
   }
-  // for(int i=0;i<vizinhos.size();i++){
-  //   cout << vizinhos[i] << endl;
-  // }
+  //for(int i=0;i<vizinhos.size();i++){
+  //  cout << vizinhos[i] << endl;
+  //}
   return vizinhos;
 }
 
 vector<int> Lista::BFS(int raiz) {
 
-//	clock_t begin = clock();
+//clock_t begin = clock();
 ofstream myOut;
 myOut.open (m_savePath + "/BFS.txt");
 myOut << "start" << endl;
@@ -135,50 +136,57 @@ void Lista::Grau(){
   myOut.open (m_savePath + "/grau.txt");
   myOut << "GrauMax: " << vetorGrau[0] << endl;
   myOut << "GrauMin:" << vetorGrau[1] << endl;
-  myOut << "GrauMedio: " << (avg/m_numVertices)+1 << endl;
+  myOut << "GrauMedio: " <<   (avg/m_numVertices)+1 << endl;
   // myOut << "GrauMediana: " << vetorGrau[3] << endl;
   myOut.close();
 }
 
-vector<int> Lista::DFS(int raiz) {
+vector<bool> Lista::DFS(int raiz) {
 
-	int src = raiz-1;
+	int s = raiz-1;
 	// Initialize vectors and stack
 	vector<bool> visitado(m_numVertices,0);
 	vector<int> pai(m_numVertices,-1);
 	vector<int> nivel(m_numVertices,-1);
 	stack<int> pilha;
-  vector<int> explorado;
+  //vector<int> explorado;
 
   ofstream myOut;
   myOut.open (m_savePath + "/DFS.txt");
   myOut << "start" << endl;
 
-	//visitado[src] = 1;
-	nivel[src] = 0;
-	pilha.push(src);
-
+	//visitado[s] = 1;
+	nivel[s] = 0;
+	pilha.push(s);
+  //myOut << "Vertice: " << s << ", Nivel: " << nivel[s] << ", Pai: " << pai[s] << endl;
 	cout << endl<< "DFS(" << raiz << ") Running..." << endl;
 	while(!pilha.empty()) {
 		int v = pilha.top();
 		pilha.pop();
-    if(visitado[v]==0){
-      visitado[v] = 1;
+    if (visitado[v]==0){
+      myOut << "Vertice: " << v << ", Nivel: " << nivel[v] << ", Pai: " << pai[v] << endl;
+      visitado[v]=1;
       vector<int> w = vizinhos(v);
       for(int i = 0; i < w.size();i++){
-          visitado[w[i]-1] = 1;
-          pai[w[i]-1] = v;
-          nivel[w[i]-1] = nivel[v]+1;
-          pilha.push(w[i]-1);
-        }
+        pilha.push(w[i]-1);
+          //pai[w[i]-1] = v;
+          //nivel[w[i]-1] = nivel[v]+1;
+          //visitado[w[i]-1] = 1;
+          int n = pilha.top();
+          pai[n] = v;
+          nivel[n] = nivel[v] + 1;
     }
-    explorado.push_back(v);
   }
-  for(int i=0;i<explorado.size();i++){
-    myOut << "vertice: "<< explorado[i] << ": pai:"<< pai[explorado[i]] << " nivel:" << nivel[explorado[i]] << endl;
-  }
-	return explorado;
 }
+  // explorado.push_back(v);
+  //}
+  //for(int i=0;i<explorado.size();i++){
+  //  myOut << "vertice: "<< explorado[i] << ": pai:"<< pai[explorado[i]] << " nivel:" << nivel[explorado[i]] << endl;
+  //}
+	return visitado;
+}
+
+
 
 Lista::~Lista(){
     ListInfo* aux;
