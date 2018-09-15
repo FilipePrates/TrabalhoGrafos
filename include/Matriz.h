@@ -6,10 +6,10 @@
 #include <vector>
 
 
-typedef struct int1bit{
-	int x:1;
-}int1bit;
-
+// struct int1bit{
+// 	int x:1;
+// }int1bit;
+//
 using namespace std;
 
 class Matriz : public Grafo{
@@ -21,6 +21,7 @@ class Matriz : public Grafo{
         void Grau2();
         vector<bool> DFS(int raiz);
         vector<int> BFS(int raiz);
+        void CC();
     protected:
 				//void iniciaMatriz(int m_numVertices);
         void addAresta(int v0,int vf);

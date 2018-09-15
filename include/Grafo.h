@@ -8,10 +8,10 @@
 
 using namespace std;
 
-// struct ListInfo{
-//     int vertice;
-//     ListInfo *pNext, *pPrev;
-// };
+struct ListInfo{
+    int vertice;
+    ListInfo *pNext, *pPrev;
+};
 
 class Grafo{
     public:

@@ -5,11 +5,6 @@
 #include <string>
 #include <vector>
 
-struct ListInfo{
-    int vertice;
-    ListInfo *pNext, *pPrev;
-};
-
 using namespace std;
 
 class Lista : public Grafo{

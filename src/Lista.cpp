@@ -219,7 +219,6 @@ vector<bool> Lista::DFS(int raiz) {
 	vector<int> pai(m_numVertices,-1);
 	vector<int> nivel(m_numVertices,-1);
 	stack<int> pilha;
-  //vector<int> explorado;
 
   //Inicio do arquivo de saída
   ofstream myOut;
@@ -227,11 +226,10 @@ vector<bool> Lista::DFS(int raiz) {
   myOut << "start" << endl;
 
 	//visitado[s] = 1;
-
+  //int count;
   //Atribui a raiz nivel 0 e o insere na pilha
 	nivel[s] = 0;
 	pilha.push(s);
-  //myOut << "Vertice: " << s << ", Nivel: " << nivel[s] << ", Pai: " << pai[s] << endl;
   cout << endl<< "DFS(" << raiz << ") Rodando..." << endl;
 
   //Loop principal da DFS que percorre a pilha enquanto ela não estiver vazia.
@@ -248,52 +246,66 @@ vector<bool> Lista::DFS(int raiz) {
       vector<int> w = vizinhos(v);
       for(int i = 0; i < w.size();i++){
         pilha.push(w[i]-1);
-          //pai[w[i]-1] = v;
-          //nivel[w[i]-1] = nivel[v]+1;
-          //visitado[w[i]-1] = 1;
           int n = pilha.top();
           pai[n] = v;
           nivel[n] = nivel[v] + 1;
+        }
+      }
     }
-  }
-}
-  // explorado.push_back(v);
-  //}
-  //for(int i=0;i<explorado.size();i++){
-  //  myOut << "vertice: "<< explorado[i] << ": pai:"<< pai[explorado[i]] << " nivel:" << nivel[explorado[i]] << endl;
-  //}
 
   //Retorno do vetor visitados
 	return visitado;
 }
 
 
-//Funcao para achar as componentes conexas de um grafo. Ainda está incorreta
+//Funcao para achar as componentes conexas de um grafo.
 void Lista::CC(){
-  vector<bool> marcado(m_numVertices,0);
-  vector<int> num_Componente;
-  int totalComponentes = 0;
-  //int componenteMarcada = 1;
+  //Vetor de ids, que se referem ao numero da componente conexa que o vértice
+  //pertence
+  vector<int> id(m_numVertices+1, -1);
+
+  //Variável contadora de componentes
+  int count = 0;
+
+  //Criação do arquivo de saída
   ofstream myOut;
   myOut.open (m_savePath + "/CC.txt");
 
-  for (int i = 0; i < m_numVertices; i++){
-    if (marcado[i] == 0){
-        DFS(i);
-        totalComponentes++;
-        num_Componente.resize(totalComponentes);
-        num_Componente[totalComponentes] = DFS(i).size();
-        for (int j = 0; j < m_numVertices; j++){
-            if (DFS(i)[j]==1){
-                vector<int> componenteAtual(DFS(i).size());
-                componenteAtual[j] = DFS(i)[j];
-                myOut << "Componente " << totalComponentes << ": " << componenteAtual[j] << ", ";
-                //componenteMarcada++;
-  }
-        }
+  //Vetor de vetores que guarda todas as componentes
+  vector< vector<int> > componentes;
+
+  //Loop principal
+  for (int i = 1; i <= m_numVertices; i++){
+    //Se o id for -1, significa que o vértice ainda nao foi encontrado
+    //Nesse caso, roda uma BFS e adiciona o vetor de explorados retornado por essa
+    //BFS no vetor de vetores componentes. Depois atualiza o id dos vértices
+    //marcados e incrementa o contador de componentes
+    if (id[i-1] == -1){
+      vector<int> temp = BFS(i);
+      sort(temp.begin(), temp.end());
+      componentes.push_back(temp);
+      for (int j = 0; j<temp.size();j++){
+        id[temp[j]] = count;
       }
+    count++;
     }
   }
+
+  //Ordena vetor de componentes do maior tamanho para o menor
+  sort(componentes.begin(), componentes.end(), [](const vector<int> & a, const vector<int> & b){ return a.size() > b.size(); });
+  
+  //Escrita do número de componentes
+  myOut << "Numero de componentes: " << count << endl;
+
+  //Escrita de cada componente e seus respectivos vértices
+  for (int i = 0; i < componentes.size();i++){
+    myOut << "Componente " << i+1 << ": ";
+    for (int j = 0; j < componentes[i].size();j++){
+       myOut << componentes[i][j]+1 << ", ";
+    }
+    myOut << endl;
+  }
+}
 
 
 //Destrutor da lista
